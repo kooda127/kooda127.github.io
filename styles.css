@@ -132,58 +132,30 @@ section { padding: 80px 5%; text-align: center; position: relative; }
 .platforms-logos span { display: flex; align-items: center; gap: 10px; }
 .dot { width: 6px; height: 6px; background: #333; border-radius: 50%; }
 
-/* --- TARJETAS DE SERVICIOS (ARREGLADO) --- */
+/* --- TARJETAS DE SERVICIOS --- */
+
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
 
 .service-card { 
-    background: var(--bg-card); /* Fondo base sólido */
-    padding: 40px; 
-    border: 1px solid var(--border); 
-    border-radius: 12px; 
-    /* Necesario para el truco del fondo: */
-    position: relative; 
-    overflow: hidden;
-    
-    /* TRANSICIONES SEPARADAS (La clave del éxito) */
-    /* 1. El movimiento sigue siendo rápido y con rebote */
-    /* 2. El borde y la sombra tardan casi 1 segundo en aparecer (muy suave) */
-    transition: 
-        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        border-color 0.9s ease-out,
-        box-shadow 0.9s ease-out;
+
+    background: var(--bg-card); padding: 40px; 
+
+    border: 1px solid var(--border); border-radius: 12px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+
+    transition: border-color 0.8s ease;
+
 }
 
-/* --- EL TRUCO: Capa de gradiente invisible encima --- */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* Este es el gradiente que tenías originalmente */
-    background: linear-gradient(to bottom, #141414, #0a0a0a);
-    opacity: 0; /* Invisible al principio */
-    z-index: 0; /* Detrás del texto */
-    /* La aparición del fondo también es lenta y suave */
-    transition: opacity 0.9s ease-out;
-}
-
-/* Aseguramos que el texto y los iconos queden por encima del fondo nuevo */
-.service-card > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* --- HOVER STATE --- */
 .service-card:hover { 
-    /* El color se activa aquí, pero la transición lenta está definida arriba */
-    border-color: var(--accent); 
-    transform: translateY(-8px); 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
-    /* IMPORTANTE: NO cambiamos el background aquí */
-}
 
-/* Al hacer hover en la tarjeta, hacemos visible la capa del gradiente suavemente */
-.service-card:hover::before {
-    opacity: 1;
+    border-color: var(--accent); 
+
+    transform: translateY(-8px); 
+
+    background: linear-gradient(to bottom, #141414, #0a0a0a);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+
 }
 
 /* Iconos flotantes */
@@ -378,5 +350,6 @@ footer { background-color: #020202; color: #888; padding: 80px 5% 30px; font-siz
     .btn-primary { width: 100%; padding: 16px; } /* Botón ancho fácil de pulsar */
 
 }
+
 
 
