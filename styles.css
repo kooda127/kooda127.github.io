@@ -137,12 +137,24 @@ section { padding: 80px 5%; text-align: center; position: relative; }
 .service-card { 
     background: var(--bg-card); padding: 40px; 
     border: 1px solid var(--border); border-radius: 12px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+
+    /* Separamos las transiciones */
+    transition: 
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Movimiento rápido con rebote */
+        box-shadow 0.5s ease, /* Sombra normal */
+        border-color 0.8s ease, /* El color tarda el DOBLE en aparecer (efecto suave) */
+        background-color 0.5s ease; /* Fondo suave */
 }
 .service-card:hover { 
     border-color: var(--accent); 
     transform: translateY(-8px); 
     background: linear-gradient(to bottom, #141414, #0a0a0a);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+
+    /* Usamos un color sólido o background-color para que la transición funcione */
+    background-color: #000000; /* Negro puro o muy oscuro */
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* Iconos flotantes */
@@ -335,4 +347,5 @@ footer { background-color: #020202; color: #888; padding: 80px 5% 30px; font-siz
     .platforms-logos { gap: 15px; font-size: 0.8rem; }
     
     .btn-primary { width: 100%; padding: 16px; } /* Botón ancho fácil de pulsar */
+
 }
