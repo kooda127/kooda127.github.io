@@ -137,25 +137,28 @@ section { padding: 80px 5%; text-align: center; position: relative; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
 
 .service-card {
-    background: var(--bg-card); 
+    /* Estado Normal */
+    background-color: var(--bg-card); /* Usamos background-color explícitamente */
     padding: 40px;
-    border: 1px solid var(--border); 
+    border: 1px solid var(--border);
     border-radius: 12px;
     
-    /* SOLUCIÓN: Todo en una sola línea separado por comas */
+    /* LA MAGIA: Todas las transiciones juntas separadas por comas */
     transition: 
-        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Movimiento (rápido y con rebote) */
-        border-color 0.8s ease,    /* Borde (lento y suave) */
-        box-shadow 0.8s ease;      /* Sombra (lenta y suave) */
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Movimiento rápido */
+        border-color 0.8s ease,     /* El borde tarda casi 1s en encenderse */
+        background-color 0.8s ease, /* El fondo se oscurece despacio */
+        box-shadow 0.8s ease;       /* La sombra crece despacio */
 }
 
 .service-card:hover {
-    border-color: var(--accent);
+    /* Estado Hover */
     transform: translateY(-8px);
+    border-color: var(--accent);
     
-    /* OJO: Los gradientes NO tienen transición suave en CSS. 
-       El fondo cambiará de golpe, pero el borde sí tardará 0.8s */
-    background: linear-gradient(to bottom, #141414, #0a0a0a);
+    /* CAMBIO CLAVE: Usamos color sólido, NO gradient. */
+    /* Esto permite que la transición de 0.8s funcione perfecto */
+    background-color: #000000; 
     
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
@@ -352,6 +355,7 @@ footer { background-color: #020202; color: #888; padding: 80px 5% 30px; font-siz
     .btn-primary { width: 100%; padding: 16px; } /* Botón ancho fácil de pulsar */
 
 }
+
 
 
 
