@@ -135,27 +135,30 @@ section { padding: 80px 5%; text-align: center; position: relative; }
 /* --- TARJETAS DE SERVICIOS --- */
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
 .service-card { 
-    background: var(--bg-card); padding: 40px; 
-    border: 1px solid var(--border); border-radius: 12px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-
-    /* Separamos las transiciones */
+background: var(--bg-card);
+    padding: 40px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    
+    /* SOLUCIÓN: Separamos las animaciones con tiempos distintos */
     transition: 
-        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Movimiento rápido con rebote */
-        box-shadow 0.5s ease, /* Sombra normal */
-        border-color 0.8s ease, /* El color tarda el DOBLE en aparecer (efecto suave) */
-        background-color 0.5s ease; /* Fondo suave */
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), /* Movimiento rápido y con rebote */
+        border-color 1s ease,    /* El color tarda 1 SEGUNDO en aparecer (muy suave) */
+        background-color 0.6s ease, /* El fondo cambia suavemente */
+        box-shadow 0.6s ease;
 }
 .service-card:hover { 
-    border-color: var(--accent); 
-    transform: translateY(-8px); 
-    background: linear-gradient(to bottom, #141414, #0a0a0a);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-
-    /* Usamos un color sólido o background-color para que la transición funcione */
-    background-color: #000000; /* Negro puro o muy oscuro */
+/* El movimiento se mantiene igual */
+    transform: translateY(-8px);
     
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+    /* El borde amarillo entra despacio gracias al "1s" de arriba */
+    border-color: var(--accent);
+    
+    /* CAMBIO CLAVE: Usamos un color sólido muy oscuro en vez de degradado */
+    /* Si pones linear-gradient aquí, la animación SE ROMPE. Usa background-color */
+    background-color: #000000; 
+    
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15); /* Un poco de brillo dorado en la sombra */}
 
 /* Iconos flotantes */
 @keyframes float {
@@ -349,3 +352,4 @@ footer { background-color: #020202; color: #888; padding: 80px 5% 30px; font-siz
     .btn-primary { width: 100%; padding: 16px; } /* Botón ancho fácil de pulsar */
 
 }
+
